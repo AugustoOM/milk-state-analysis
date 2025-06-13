@@ -35,7 +35,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
       <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Avg Temperature</CardTitle>
+          <CardTitle className="text-sm font-medium">Temperatura Promedio</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgTemp.toFixed(1)}°C</div>
@@ -45,17 +45,17 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
 
       <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Avg pH Level</CardTitle>
+          <CardTitle className="text-sm font-medium">Nivel de pH Promedio</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgPH.toFixed(2)}</div>
-          <p className="text-xs text-green-100">Target: >6.6</p>
+          <p className="text-xs text-green-100">Target: {'>'}6.6</p>
         </CardContent>
       </Card>
 
       <Card className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Avg Fat Content</CardTitle>
+          <CardTitle className="text-sm font-medium">Tenor Graso Promedio</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgFat.toFixed(1)}%</div>

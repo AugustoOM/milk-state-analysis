@@ -65,7 +65,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
           <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
             <div className="flex items-center space-x-2">
               <Thermometer className="w-4 h-4 text-blue-600" />
-              <span className="text-sm font-medium">Temperature</span>
+              <span className="text-sm font-medium">Temperatura</span>
             </div>
             <div className="text-right">
               <span className="text-lg font-semibold">{container.temperature.toFixed(1)}°C</span>
@@ -78,7 +78,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
           <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
             <div className="flex items-center space-x-2">
               <Beaker className="w-4 h-4 text-green-600" />
-              <span className="text-sm font-medium">pH Level</span>
+              <span className="text-sm font-medium">Nivel de pH</span>
             </div>
             <div className="text-right">
               <span className="text-lg font-semibold">{container.ph.toFixed(2)}</span>
@@ -91,7 +91,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
           <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
             <div className="flex items-center space-x-2">
               <Droplets className="w-4 h-4 text-yellow-600" />
-              <span className="text-sm font-medium">Fat Content</span>
+              <span className="text-sm font-medium">Tenor Graso</span>
             </div>
             <div className="text-right">
               <span className="text-lg font-semibold">{container.fatContent.toFixed(1)}%</span>

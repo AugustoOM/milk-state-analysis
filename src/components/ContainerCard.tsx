@@ -18,20 +18,19 @@ interface ContainerCardProps {
 }
 
 const getTemperatureStatus = (temp: number) => {
-  if (temp < 2 || temp > 6) return { status: 'critical', color: 'destructive' };
-  if (temp < 3 || temp > 5) return { status: 'warning', color: 'secondary' };
-  return { status: 'optimal', color: 'default' };
+  if (temp < 3 || temp > 4) return { status: 'critical', color: 'destructive' as const };
+  return { status: 'optimal', color: 'default' as const };
 };
 
 const getPHStatus = (ph: number) => {
-  if (ph < 6.6 || ph > 7.0) return { status: 'critical', color: 'destructive' };
-  if (ph < 6.7 || ph > 6.9) return { status: 'warning', color: 'secondary' };
-  return { status: 'optimal', color: 'default' };
+  if (ph <= 6.5) return { status: 'critical', color: 'destructive' as const };
+  if (ph <= 6.6) return { status: 'warning', color: 'secondary' as const };
+  return { status: 'optimal', color: 'default' as const };
 };
 
 const getFatStatus = (fat: number) => {
-  if (fat < 3.2 || fat > 4.2) return { status: 'warning', color: 'secondary' };
-  return { status: 'optimal', color: 'default' };
+  if (fat < 1 || fat > 3) return { status: 'critical', color: 'destructive' as const };
+  return { status: 'optimal', color: 'default' as const };
 };
 
 const ContainerCard = ({ container }: ContainerCardProps) => {

@@ -1,6 +1,5 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 interface Container {
   id: number;
@@ -22,12 +21,12 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
   const avgFat = containers.reduce((sum, c) => sum + c.fatContent, 0) / containers.length;
   
   const criticalContainers = containers.filter(c => 
-    c.temperature < 2 || c.temperature > 6 || c.ph < 6.6 || c.ph > 7.0
+    c.temperature < 3 || c.temperature > 4 || c.ph <= 6.5 || c.fatContent < 1 || c.fatContent > 3
   ).length;
 
   const warningContainers = containers.filter(c => 
-    (c.temperature < 3 || c.temperature > 5 || c.ph < 6.7 || c.ph > 6.9 || c.fatContent < 3.2 || c.fatContent > 4.2) &&
-    !(c.temperature < 2 || c.temperature > 6 || c.ph < 6.6 || c.ph > 7.0)
+    c.ph <= 6.6 && c.ph > 6.5 &&
+    !(c.temperature < 3 || c.temperature > 4 || c.ph <= 6.5 || c.fatContent < 1 || c.fatContent > 3)
   ).length;
 
   const optimalContainers = containers.length - criticalContainers - warningContainers;
@@ -40,7 +39,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgTemp.toFixed(1)}°C</div>
-          <p className="text-xs text-blue-100">Target: 3-5°C</p>
+          <p className="text-xs text-blue-100">Target: 3-4°C</p>
         </CardContent>
       </Card>
 
@@ -50,7 +49,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgPH.toFixed(2)}</div>
-          <p className="text-xs text-green-100">Target: 6.7-6.9</p>
+          <p className="text-xs text-green-100">Target: >6.6</p>
         </CardContent>
       </Card>
 
@@ -60,7 +59,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgFat.toFixed(1)}%</div>
-          <p className="text-xs text-yellow-100">Target: 3.2-4.2%</p>
+          <p className="text-xs text-yellow-100">Target: 1-3%</p>
         </CardContent>
       </Card>
 

@@ -7,7 +7,7 @@ import MetricsSummary from '../components/MetricsSummary';
 // Mock data for demonstration
 const generateMockData = (containerName: string) => {
   // Force containers A, B, C to be optimal
-  if (containerName === "Contenedor A" || containerName === "Contenedor B" || containerName === "Contenedor C") {
+  if (containerName === "Tanque A" || containerName === "Tanque B" || containerName === "Tanque C") {
     return {
       temperature: 3.5, // Optimal range 3-4°C
       ph: 6.8, // Optimal > 6.6
@@ -26,12 +26,12 @@ const generateMockData = (containerName: string) => {
 
 const Index = () => {
   const [containers, setContainers] = useState([
-    { id: 1, name: "Contenedor A", capacity: 1000, ...generateMockData("Contenedor A") },
-    { id: 2, name: "Contenedor B", capacity: 1500, ...generateMockData("Contenedor B") },
-    { id: 3, name: "Contenedor C", capacity: 800, ...generateMockData("Contenedor C") },
-    { id: 4, name: "Contenedor D", capacity: 1200, ...generateMockData("Contenedor D") },
-    { id: 5, name: "Contenedor E", capacity: 900, ...generateMockData("Contenedor E") },
-    { id: 6, name: "Contenedor F", capacity: 1100, ...generateMockData("Contenedor F") },
+    { id: 1, name: "Tanque A", capacity: 1000, ...generateMockData("Tanque A") },
+    { id: 2, name: "Tanque B", capacity: 800, ...generateMockData("Tanque B") },
+    { id: 3, name: "Tanque C", capacity: 500, ...generateMockData("Tanque C") },
+    { id: 4, name: "Tanque D", capacity: 1200, ...generateMockData("Tanque D") },
+    { id: 5, name: "Tanque E", capacity: 1500, ...generateMockData("Tanque E") },
+    { id: 6, name: "Tanque F", capacity: 1100, ...generateMockData("Tanque F") },
   ]);
 
   // Simulate real-time updates

@@ -50,7 +50,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
         <div className="flex justify-between items-start">
           <div>
             <CardTitle className="text-lg font-semibold">{container.name}</CardTitle>
-            <p className="text-sm text-muted-foreground">{container.capacity}L Capacity</p>
+            <p className="text-sm text-muted-foreground">{container.capacity}L Capacidad</p>
           </div>
           <Badge 
             variant={overallStatus === 'crítico' ? 'destructive' : overallStatus === 'advertencia' ? 'secondary' : 'default'}
@@ -104,7 +104,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
 
         <div className="flex items-center space-x-2 text-xs text-muted-foreground border-t pt-3">
           <Clock className="w-3 h-3" />
-          <span>Last updated: {container.lastUpdated.toLocaleTimeString()}</span>
+          <span>Última actualización: {container.lastUpdated.toLocaleTimeString()}</span>
         </div>
       </CardContent>
     </Card>

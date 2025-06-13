@@ -39,7 +39,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgTemp.toFixed(1)}°C</div>
-          <p className="text-xs text-blue-100">Target: 3-4°C</p>
+          <p className="text-xs text-blue-100">Objetivo: 3-4°C</p>
         </CardContent>
       </Card>
 
@@ -49,7 +49,7 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgPH.toFixed(2)}</div>
-          <p className="text-xs text-green-100">Target: {'>'}6.6</p>
+          <p className="text-xs text-green-100">Objetivo: {'>'}6.6</p>
         </CardContent>
       </Card>
 
@@ -59,27 +59,27 @@ const MetricsSummary = ({ containers }: MetricsSummaryProps) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{avgFat.toFixed(1)}%</div>
-          <p className="text-xs text-yellow-100">Target: 1-3%</p>
+          <p className="text-xs text-yellow-100">Objetivo: 1-3%</p>
         </CardContent>
       </Card>
 
       <Card className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Optimal</CardTitle>
+          <CardTitle className="text-sm font-medium">Óptimo</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{optimalContainers}</div>
-          <p className="text-xs text-emerald-100">Containers in range</p>
+          <p className="text-xs text-emerald-100">Contenedores en rango</p>
         </CardContent>
       </Card>
 
       <Card className="bg-gradient-to-r from-red-500 to-red-600 text-white">
         <CardHeader className="pb-2">
-          <CardTitle className="text-sm font-medium">Alerts</CardTitle>
+          <CardTitle className="text-sm font-medium">Alertas</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-2xl font-bold">{criticalContainers + warningContainers}</div>
-          <p className="text-xs text-red-100">{criticalContainers} critical, {warningContainers} warning</p>
+          <p className="text-xs text-red-100">{criticalContainers} crítico, {warningContainers} advertencia</p>
         </CardContent>
       </Card>
     </div>

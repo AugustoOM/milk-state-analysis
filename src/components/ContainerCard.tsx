@@ -18,19 +18,19 @@ interface ContainerCardProps {
 }
 
 const getTemperatureStatus = (temp: number) => {
-  if (temp < 3 || temp > 4) return { status: 'critical', color: 'destructive' as const };
-  return { status: 'optimal', color: 'default' as const };
+  if (temp < 3 || temp > 4) return { status: 'crítico', color: 'destructive' as const };
+  return { status: 'óptimo', color: 'default' as const };
 };
 
 const getPHStatus = (ph: number) => {
-  if (ph <= 6.5) return { status: 'critical', color: 'destructive' as const };
-  if (ph <= 6.6) return { status: 'warning', color: 'secondary' as const };
-  return { status: 'optimal', color: 'default' as const };
+  if (ph <= 6.5) return { status: 'crítico', color: 'destructive' as const };
+  if (ph <= 6.6) return { status: 'advertencia', color: 'secondary' as const };
+  return { status: 'óptimo', color: 'default' as const };
 };
 
 const getFatStatus = (fat: number) => {
-  if (fat < 1 || fat > 3) return { status: 'critical', color: 'destructive' as const };
-  return { status: 'optimal', color: 'default' as const };
+  if (fat < 1 || fat > 3) return { status: 'crítico', color: 'destructive' as const };
+  return { status: 'óptimo', color: 'default' as const };
 };
 
 const ContainerCard = ({ container }: ContainerCardProps) => {
@@ -38,11 +38,11 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
   const phStatus = getPHStatus(container.ph);
   const fatStatus = getFatStatus(container.fatContent);
 
-  const overallStatus = [tempStatus, phStatus, fatStatus].some(s => s.status === 'critical') 
-    ? 'critical' 
-    : [tempStatus, phStatus, fatStatus].some(s => s.status === 'warning') 
-    ? 'warning' 
-    : 'optimal';
+  const overallStatus = [tempStatus, phStatus, fatStatus].some(s => s.status === 'crítico') 
+    ? 'crítico' 
+    : [tempStatus, phStatus, fatStatus].some(s => s.status === 'advertencia') 
+    ? 'advertencia' 
+    : 'óptimo';
 
   return (
     <Card className="hover:shadow-lg transition-shadow duration-300">
@@ -53,7 +53,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
             <p className="text-sm text-muted-foreground">{container.capacity}L Capacity</p>
           </div>
           <Badge 
-            variant={overallStatus === 'critical' ? 'destructive' : overallStatus === 'warning' ? 'secondary' : 'default'}
+            variant={overallStatus === 'crítico' ? 'destructive' : overallStatus === 'advertencia' ? 'secondary' : 'default'}
             className="capitalize"
           >
             {overallStatus}

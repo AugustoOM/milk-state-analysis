@@ -19,18 +19,18 @@ interface ContainerCardProps {
 
 const getTemperatureStatus = (temp: number) => {
   if (temp < 3 || temp > 4) return { status: 'crítico', color: 'destructive' as const };
-  return { status: 'óptimo', color: 'default' as const };
+  return { status: 'Óptimo', color: 'default' as const };
 };
 
 const getPHStatus = (ph: number) => {
   if (ph <= 6.5) return { status: 'crítico', color: 'destructive' as const };
   if (ph <= 6.6) return { status: 'advertencia', color: 'secondary' as const };
-  return { status: 'óptimo', color: 'default' as const };
+  return { status: 'Óptimo', color: 'default' as const };
 };
 
 const getFatStatus = (fat: number) => {
   if (fat < 1 || fat > 3) return { status: 'crítico', color: 'destructive' as const };
-  return { status: 'óptimo', color: 'default' as const };
+  return { status: 'Óptimo', color: 'default' as const };
 };
 
 const ContainerCard = ({ container }: ContainerCardProps) => {
@@ -42,7 +42,7 @@ const ContainerCard = ({ container }: ContainerCardProps) => {
     ? 'crítico' 
     : [tempStatus, phStatus, fatStatus].some(s => s.status === 'advertencia') 
     ? 'advertencia' 
-    : 'óptimo';
+    : 'Óptimo';
 
   return (
     <Card className="hover:shadow-lg transition-shadow duration-300">

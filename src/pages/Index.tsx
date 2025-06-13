@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import ContainerCard from '../components/ContainerCard';
 import Header from '../components/Header';
@@ -6,12 +5,12 @@ import MetricsSummary from '../components/MetricsSummary';
 
 // Mock data for demonstration
 const generateMockData = (containerName: string) => {
-  // Force containers A, B, C to be optimal
+  // Force containers A, B, C to be optimal but with random variations
   if (containerName === "Tanque A" || containerName === "Tanque B" || containerName === "Tanque C") {
     return {
-      temperature: 3.5, // Optimal range 3-4°C
-      ph: 6.8, // Optimal > 6.6
-      fatContent: 2.0, // Optimal range 1-3%
+      temperature: 3 + Math.random(), // Random between 3-4°C
+      ph: 6.6 + Math.random() * 0.4, // Random between 6.6-7.0
+      fatContent: 1 + Math.random() * 2, // Random between 1-3%
       lastUpdated: new Date(),
     };
   }

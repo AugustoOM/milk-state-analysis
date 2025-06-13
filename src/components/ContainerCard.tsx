@@ -1,0 +1,115 @@
+
+import { Thermometer, Beaker, Droplets, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+
+interface Container {
+  id: number;
+  name: string;
+  capacity: number;
+  temperature: number;
+  ph: number;
+  fatContent: number;
+  lastUpdated: Date;
+}
+
+interface ContainerCardProps {
+  container: Container;
+}
+
+const getTemperatureStatus = (temp: number) => {
+  if (temp < 2 || temp > 6) return { status: 'critical', color: 'destructive' };
+  if (temp < 3 || temp > 5) return { status: 'warning', color: 'secondary' };
+  return { status: 'optimal', color: 'default' };
+};
+
+const getPHStatus = (ph: number) => {
+  if (ph < 6.6 || ph > 7.0) return { status: 'critical', color: 'destructive' };
+  if (ph < 6.7 || ph > 6.9) return { status: 'warning', color: 'secondary' };
+  return { status: 'optimal', color: 'default' };
+};
+
+const getFatStatus = (fat: number) => {
+  if (fat < 3.2 || fat > 4.2) return { status: 'warning', color: 'secondary' };
+  return { status: 'optimal', color: 'default' };
+};
+
+const ContainerCard = ({ container }: ContainerCardProps) => {
+  const tempStatus = getTemperatureStatus(container.temperature);
+  const phStatus = getPHStatus(container.ph);
+  const fatStatus = getFatStatus(container.fatContent);
+
+  const overallStatus = [tempStatus, phStatus, fatStatus].some(s => s.status === 'critical') 
+    ? 'critical' 
+    : [tempStatus, phStatus, fatStatus].some(s => s.status === 'warning') 
+    ? 'warning' 
+    : 'optimal';
+
+  return (
+    <Card className="hover:shadow-lg transition-shadow duration-300">
+      <CardHeader className="pb-3">
+        <div className="flex justify-between items-start">
+          <div>
+            <CardTitle className="text-lg font-semibold">{container.name}</CardTitle>
+            <p className="text-sm text-muted-foreground">{container.capacity}L Capacity</p>
+          </div>
+          <Badge 
+            variant={overallStatus === 'critical' ? 'destructive' : overallStatus === 'warning' ? 'secondary' : 'default'}
+            className="capitalize"
+          >
+            {overallStatus}
+          </Badge>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-1 gap-3">
+          <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+            <div className="flex items-center space-x-2">
+              <Thermometer className="w-4 h-4 text-blue-600" />
+              <span className="text-sm font-medium">Temperature</span>
+            </div>
+            <div className="text-right">
+              <span className="text-lg font-semibold">{container.temperature.toFixed(1)}°C</span>
+              <Badge variant={tempStatus.color} className="ml-2 text-xs">
+                {tempStatus.status}
+              </Badge>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+            <div className="flex items-center space-x-2">
+              <Beaker className="w-4 h-4 text-green-600" />
+              <span className="text-sm font-medium">pH Level</span>
+            </div>
+            <div className="text-right">
+              <span className="text-lg font-semibold">{container.ph.toFixed(2)}</span>
+              <Badge variant={phStatus.color} className="ml-2 text-xs">
+                {phStatus.status}
+              </Badge>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+            <div className="flex items-center space-x-2">
+              <Droplets className="w-4 h-4 text-yellow-600" />
+              <span className="text-sm font-medium">Fat Content</span>
+            </div>
+            <div className="text-right">
+              <span className="text-lg font-semibold">{container.fatContent.toFixed(1)}%</span>
+              <Badge variant={fatStatus.color} className="ml-2 text-xs">
+                {fatStatus.status}
+              </Badge>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-2 text-xs text-muted-foreground border-t pt-3">
+          <Clock className="w-3 h-3" />
+          <span>Last updated: {container.lastUpdated.toLocaleTimeString()}</span>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
+
+export default ContainerCard;
